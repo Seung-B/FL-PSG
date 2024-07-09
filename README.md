@@ -34,27 +34,9 @@ There are detailed comments in notebook.
 | Clothing and Accessories |                backpack, umbrella, handbag, tie, suitcase                |
 |    Outdoor Activities    |        frisbee, skis, snowboard, sports ball, kite, baseball bat, baseball glove, skateboard, surfboard, tennis racket, playingfield, net |
 |    Kitchen and Dining    |             bottle, wine glass, cup, fork, knife, spoon, bowl            |
-|           Food           |            banana, apple, sandwich, orange, broccoli, carrot,            |
-|                          |              hot dog, pizza, donut, cake, food-other-merged              |
-|      Household Items     |      curtain, blanket, toilet, tv, laptop, mouse, remote, keyboard,      |
-|                          |      cell phone, microwave, oven, toaster, sink, refrigerator, book,     |
-|                          | pillow, towel, clock, vase, scissors, teddy bear, hair drier, toothbrush |
-|        Structures        |           bridge, house, tent, door-stuff, wall-other-merged,            |
-|                          |                                                                          |
-|                          |          building-other-merged, pavement-merged, ceiling-merged,         |
-|                          |                                                                          |
-|                          |      wall-brick, wall-stone, wall-tile, wall-wood, stairs, railroad,     |
-|                          |                                                                          |
-|                          |    road, roof, floor-wood, platform, floor-other-merged, fence-merged    |
-|                          |                                                                          |
-|          Nature          |        flower, fruit, gravel, river, sea, tree-merged, snow, sand,       |
-|                          |                                                                          |
-|                          |         water-other, mountain-merged, grass-merged, dirt-merged,         |
-|                          |                                                                          |
-|                          |                       rock-merged, sky-other-merged                      |
-|                          |                                                                          |
-|           Misc.          |       cardboard, counter, light, mirror-stuff, shelf, window-blind,      |
-|                          |                                                                          |
-|                          |         window-other, cabinet-merged, table-merged, paper-merged         |
-|                          |                                                                          |
+|           Food           |            banana, apple, sandwich, orange, broccoli, carrot, hot dog, pizza, donut, cake, food-other-merged              |
+|      Household Items     |      curtain, blanket, toilet, tv, laptop, mouse, remote, keyboard, cell phone, microwave, oven, toaster, sink, refrigerator, book, pillow, towel, clock, vase, scissors, teddy bear, hair drier, toothbrush |
+|        Structures        |           bridge, house, tent, door-stuff, wall-other-merged, building-other-merged, pavement-merged, ceiling-merged, wall-brick, wall-stone, wall-tile, wall-wood, stairs, railroad, road, roof, floor-wood, platform, floor-other-merged, fence-merged    |
+|          Nature          |        flower, fruit, gravel, river, sea, tree-merged, snow, sand, water-other, mountain-merged, grass-merged, dirt-merged, rock-merged, sky-other-merged                      |
+|           Misc.          |       cardboard, counter, light, mirror-stuff, shelf, window-blind, window-other, cabinet-merged, table-merged, paper-merged         |
 
