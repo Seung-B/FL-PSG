@@ -35,6 +35,7 @@ There are detailed comments in notebook.
 
 
 ## Test
+You have to change "MODEL_NAME" and "path/to/checkpoint.pth"
 ```
 PYTHONPATH='.':$PYTHONPATH \
 python tools/test.py \
