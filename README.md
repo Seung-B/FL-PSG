@@ -11,10 +11,15 @@
 You can generated benchmark using our method from ```Data_split.ipynb```.
 There are detailed comments in notebook.
 
+## Model Zoo
+| Algorithms | CL         | Shard \| IID | Shard \| non-IID | Model Link |
+|:----------:|------------|--------------|------------------|------------|
+|     IMP    | 18.37/7.11 | 14.45/3.65   | 13.06/2.68       |            |
+|   MOTIFS   | 19.15/8.14 | 15.38/5.20   | 15.43/4.65       |            |
+|   VCTree   | 19.02/7.82 | 14.97/5.05   | 14.62/4.54       |            |
+|   GPS-Net  | 20.28/8.47 | 17.08/7.55   | 16.91/6.49       |            |
+
 ## Fedearted Learning - Train
-
-
-## Model-Zoo
 
 
 
