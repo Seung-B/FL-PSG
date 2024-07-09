@@ -2,7 +2,16 @@
 
 ![clustering](https://github.com/Seung-B/FL-OpenPSG/assets/14955366/cdc892e9-9c9c-451c-a86f-53af9a8f81af)
 
-## Environment Setting
+## Environment Setting (Editing...)
+```
+conda create -n fl_psg python=3.8
+conda activate fl_psg
+pip install mmcv-full==1.4.3 -f https://download.openmmlab.com/mmcv/dist/cu101/torch1.7.0/index.html
+pip install openmim
+mim install mmdet==2.20.0
+pip install git+https://github.com/cocodataset/panopticapi.git
+```
+
 
 ## Dataset
 ### Benchmarks used in paper
@@ -35,7 +44,8 @@ python tools/test.py \
 ```
 
 
-## Categories used in paper
+## Categories
+### Object categories
 |        Categories        |                           Subject &amp; Object                           |
 |:------------------------:|:------------------------------------------------------------------------:|
 |          Person          |                                  person                                  |
@@ -51,6 +61,18 @@ python tools/test.py \
 |        Structures        |           bridge, house, tent, door-stuff, wall-other-merged, building-other-merged, pavement-merged, ceiling-merged, wall-brick, wall-stone, wall-tile, wall-wood, stairs, railroad, road, roof, floor-wood, platform, floor-other-merged, fence-merged    |
 |          Nature          |        flower, fruit, gravel, river, sea, tree-merged, snow, sand, water-other, mountain-merged, grass-merged, dirt-merged, rock-merged, sky-other-merged                      |
 |           Misc.          |       cardboard, counter, light, mirror-stuff, shelf, window-blind, window-other, cabinet-merged, table-merged, paper-merged         |
+
+### Predicate categories (https://psgdataset.org/data_stats.html - Clear Predicate Definition)
+|             Categories             | Predicate                                                                                                                                                                                                                                                                                                                                                       |
+|:----------------------------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|      Positional Relations (6)      | over, in front of, beside, on, in, attached to                                                                                                                                                                                                                                                                                                                  |
+| Common Object-Object Relations (5) | hanging from, on the back of,falling off, going down, painted on                                                                                                                                                                                                                                                                                                |
+|         Common Actions (31)        | walking on, running on, crossing, standing on, lying on, sitting on, leaning on, flying over, jumping over, jumping from, wearing, holding, carrying, looking at, guiding, kissing, eating, drinking, feeding, biting, catching, picking (grabbing), playing with, chasing, climbing, cleaning(washing, brushing), playing, touching, pushing, pulling, opening |
+|          Human Actions (4)         | cooking, talking to, throwing (tossing), slicing                                                                                                                                                                                                                                                                                                                |
+| Actions in Traffic Scene (4)       | driving, riding, parked on, driving on                                                                                                                                                                                                                                                                                                                          |
+| Actions in Sports Scene (3)        | About to hit, kicking, swinging                                                                                                                                                                                                                                                                                                                                 |
+| Interaction between Background (3) | entering, exiting, enclosing (surrounding, warping in)                                                                                                                                                                                                                                                                                                          |
+
 
 ## Thanks
 Our implementation is based on https://github.com/Jingkang50/OpenPSG and https://github.com/open-mmlab/mmdetection.
