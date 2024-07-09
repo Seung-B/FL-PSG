@@ -32,8 +32,7 @@ There are detailed comments in notebook.
 |         Furniture        |     bench, chair, couch, potted plant, bed, dining table, rug-merged     |
 |          Animals         |     bird, cat, dog, horse, sheep, cow, elephant, bear, zebra, giraffe    |
 | Clothing and Accessories |                backpack, umbrella, handbag, tie, suitcase                |
-|    Outdoor Activities    |        frisbee, skis, snowboard, sports ball, kite, baseball bat,        |
-|                          |  baseball glove, skateboard, surfboard, tennis racket, playingfield, net |
+|    Outdoor Activities    |        frisbee, skis, snowboard, sports ball, kite, baseball bat, baseball glove, skateboard, surfboard, tennis racket, playingfield, net |
 |    Kitchen and Dining    |             bottle, wine glass, cup, fork, knife, spoon, bowl            |
 |           Food           |            banana, apple, sandwich, orange, broccoli, carrot,            |
 |                          |              hot dog, pizza, donut, cake, food-other-merged              |
