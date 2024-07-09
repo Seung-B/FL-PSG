@@ -9,6 +9,7 @@
 
 ### Benchmark Generation
 You can generated benchmark using our method from ```Data_split.ipynb```.
+
 There are detailed comments in notebook.
 
 ## Model Zoo
@@ -45,3 +46,5 @@ There are detailed comments in notebook.
 |          Nature          |        flower, fruit, gravel, river, sea, tree-merged, snow, sand, water-other, mountain-merged, grass-merged, dirt-merged, rock-merged, sky-other-merged                      |
 |           Misc.          |       cardboard, counter, light, mirror-stuff, shelf, window-blind, window-other, cabinet-merged, table-merged, paper-merged         |
 
+## Thanks
+Our implementation is based on https://github.com/Jingkang50/OpenPSG
