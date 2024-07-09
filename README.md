@@ -12,7 +12,7 @@ You can generated benchmark using our method from ```Data_split.ipynb```.
 
 There are detailed comments in notebook.
 
-## Model Zoo
+## Model Zoo (R/mR@100)
 | Algorithms | CL         | Shard \| IID | Shard \| non-IID | Model Link |
 |:----------:|------------|--------------|------------------|------------|
 |     IMP    | 18.37/7.11 | 14.45/3.65   | 13.06/2.68       |            |
@@ -47,4 +47,4 @@ There are detailed comments in notebook.
 |           Misc.          |       cardboard, counter, light, mirror-stuff, shelf, window-blind, window-other, cabinet-merged, table-merged, paper-merged         |
 
 ## Thanks
-Our implementation is based on https://github.com/Jingkang50/OpenPSG
+Our implementation is based on https://github.com/Jingkang50/OpenPSG and https://github.com/open-mmlab/mmdetection.
