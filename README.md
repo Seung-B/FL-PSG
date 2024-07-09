@@ -26,7 +26,13 @@ There are detailed comments in notebook.
 
 
 ## Test
-
+```
+PYTHONPATH='.':$PYTHONPATH \
+python tools/test.py \
+  configs/"MODEL_NAME"/panoptic_fpn_r50_fpn_1x_sgdet_psg.py \
+  "path/to/checkpoint.pth" \
+  --eval sgdet
+```
 
 
 ## Categories used in paper
