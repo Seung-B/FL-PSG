@@ -3,6 +3,7 @@
 ![clustering](https://github.com/Seung-B/FL-OpenPSG/assets/14955366/cdc892e9-9c9c-451c-a86f-53af9a8f81af)
 
 ## Environment Setting
+
 ```
 conda env create -f environment.yml
 ```
@@ -14,6 +15,8 @@ mim install mmdet==2.20.0
 pip install git+https://github.com/cocodataset/panopticapi.git
 ```
 
+### Recommendatiaon - Docker Image
+You can download this [Docker Image]https://hub.docker.com/r/sleepope/openpsg.
 
 ## Preparing Dataset - [OpenPSG](https://github.com/Jingkang50/OpenPSG)
 [Datasets](https://entuedu-my.sharepoint.com/personal/jingkang001_e_ntu_edu_sg/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fjingkang001%5Fe%5Fntu%5Fedu%5Fsg%2FDocuments%2Fopenpsg%2Fdata&ga=1)  are provided. Please unzip the files if necessary.
