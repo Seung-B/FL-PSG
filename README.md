@@ -26,10 +26,10 @@ There are detailed comments in notebook.
 ## Model Zoo (R/mR@100)
 | Algorithms | CL           | Random         | Shard - IID    | Shard - non-IID  | Model Link |
 |:----------:|--------------|----------------|----------------|------------------|------------|
-|     IMP    | 18.37 / 7.11 | 14.46 / 3.56   | 14.45 / 3.65   | 13.06 / 2.68     | {link}https://drive.google.com/drive/folders/1cA7xH_14gxhLU9s_uCv5euTRbL8b4lVG?usp=sharing |
-|   MOTIFS   | 19.15 / 8.14 | 15.64 / 5.16   | 15.38 / 5.20   | 15.43 / 4.65     | https://drive.google.com/drive/folders/1DR48e7wpavSJGP-eIwKcrydUAv83Wema?usp=sharing |
-|   VCTree   | 19.02 / 7.82 | 14.69 / 4.87   | 14.97 / 5.05   | 14.62 / 4.54     | https://drive.google.com/drive/folders/1OA3ULh_I8q5L9p9T-YpU_kE-HS2UIFKQ?usp=sharing |
-|   GPS-Net  | 20.28 / 8.47 | 16.34 / 6.66   | 17.08 / 7.55   | 16.91 / 6.49     | https://drive.google.com/drive/folders/1-khoMgN5Iuwt_YiJNnrS3hKOAriT93kG?usp=sharing |
+|     IMP    | 18.37 / 7.11 | 14.46 / 3.56   | 14.45 / 3.65   | 13.06 / 2.68     | [link](https://drive.google.com/drive/folders/1cA7xH_14gxhLU9s_uCv5euTRbL8b4lVG?usp=sharing) |
+|   MOTIFS   | 19.15 / 8.14 | 15.64 / 5.16   | 15.38 / 5.20   | 15.43 / 4.65     | [link](https://drive.google.com/drive/folders/1DR48e7wpavSJGP-eIwKcrydUAv83Wema?usp=sharing) |
+|   VCTree   | 19.02 / 7.82 | 14.69 / 4.87   | 14.97 / 5.05   | 14.62 / 4.54     | [link](https://drive.google.com/drive/folders/1OA3ULh_I8q5L9p9T-YpU_kE-HS2UIFKQ?usp=sharing) |
+|   GPS-Net  | 20.28 / 8.47 | 16.34 / 6.66   | 17.08 / 7.55   | 16.91 / 6.49     | [link](https://drive.google.com/drive/folders/1-khoMgN5Iuwt_YiJNnrS3hKOAriT93kG?usp=sharing) |
 
 ## Fedearted Learning - Train
 
