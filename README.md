@@ -16,7 +16,43 @@ pip install git+https://github.com/cocodataset/panopticapi.git
 
 
 ## Dataset
+[Datasets](https://entuedu-my.sharepoint.com/personal/jingkang001_e_ntu_edu_sg/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fjingkang001%5Fe%5Fntu%5Fedu%5Fsg%2FDocuments%2Fopenpsg%2Fdata&ga=1) and pretrained models are provided. Please unzip the files if necessary.
+```
+├── data
+│   ├── coco
+│   │   ├── panoptic_train2017
+│   │   ├── panoptic_val2017
+│   │   ├── train2017
+│   │   └── val2017
+│   └── psg
+│       ├── psg_train_val.json
+│       ├── psg_val_test.json
+│       └── ...
+├── ...
+```
+
 ### Benchmarks used in paper
+
+```
+├── ...
+├── data/FL_DATA_SPLIT
+|   ├── mini_Random
+|   |   ├── User0.json
+|   |   ├── User1.json
+|   |   └── ...
+|   ├── mini_Super_cluster_5_Diri_02
+|   |   └── ...
+|   ├── mini_Super_cluster_5_Diri_1
+|   |   └── ...
+|   ├── mini_Super_cluster_5_Diri_10
+|   |   └── ...
+|   ├── mini_Super_cluster_5_IID
+|   |   └── ...
+|   ├── mini_Super_cluster_5_nonIID
+|   |   └── ...
+|   └── mini_Super_cluster_5_Full.json
+├── ...
+```
 
 ### Benchmark Generation
 You can generated benchmark using our method from ```Data_split.ipynb```.
