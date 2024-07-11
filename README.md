@@ -55,7 +55,7 @@ pip install git+https://github.com/cocodataset/panopticapi.git
 ```
 
 ### Benchmark Generation
-You can generated benchmark using our method from ```Data_split.ipynb```.
+You can generated benchmark using our method from ```data/Data_split.ipynb```.
 
 There are detailed comments in notebook.
 
