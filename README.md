@@ -39,10 +39,10 @@ When you perform training, you can edit or choose the parameters as follows.
 - CLUSTER-TYPE: [`Super`, `Random`] 
 - DISTRIBUTION: [`IID`, `nonIID`, `Diri_02`, `Diri_1`, `Diri_10`]
 
-Split
+### Split
 ```PYTHONPATH=‘.’:$PYTHONPATH python3 tools/fl_train_mini.py {CONFIG-PATH} --model_name {MODEL-NAME} --job_name sgdet --n_rounds 100 --num_client 100 --selected_client 5 --cluster_type {CLUSTER-TYPE} --num_cluster 5 --distribution {DISTRIBUTION} ```
 
-Random
+### Random
 ```PYTHONPATH=‘.’:$PYTHONPATH python3 tools/fl_train_mini.py {CONFIG-PATH} --model_name {MODEL-NAME} --job_name sgdet --n_rounds 100 --num_client 100 --selected_client 5 --cluster_type Random --num_cluster 5 ```
 
 
