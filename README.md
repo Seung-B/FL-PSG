@@ -2,10 +2,12 @@
 
 ![clustering](https://github.com/Seung-B/FL-OpenPSG/assets/14955366/cdc892e9-9c9c-451c-a86f-53af9a8f81af)
 
-## Environment Setting (Editing...)
+## Environment Setting
 ```
-conda create -n fl_psg python=3.8
-conda activate fl_psg
+conda env create -f environment.yml
+```
+You shall manually install the following dependencies.
+```
 pip install mmcv-full==1.4.3 -f https://download.openmmlab.com/mmcv/dist/cu101/torch1.7.0/index.html
 pip install openmim
 mim install mmdet==2.20.0
