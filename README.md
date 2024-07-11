@@ -33,10 +33,15 @@ There are detailed comments in notebook.
 
 ## Fedearted Learning - Train
 When you perform training, you can edit or choose the parameters as follows.
-CONFIG-PATH: `configs/vctree/panoptic_fpn_r50_fpn_1x_sgdet_psg.py`
+
+CONFIG-PATH: ```configs/vctree/panoptic_fpn_r50_fpn_1x_sgdet_psg.py```
+
 MODEL-NAME: [`imp, motifs, vctree, gps-net`]
+
 CLUSTER-TYPE: [`Super`, `Random`]
+
 DISTRIBUTION: [`IID`, `nonIID`, `Diri_02`, `Diri_1`, `Diri_10`]
+
 
 ```PYTHONPATH=‘.’:$PYTHONPATH python3 tools/fl_train_mini.py {CONFIG-PATH} --model_name {MODEL-NAME} --job_name sgdet --n_rounds 100 --num_client 100 --selected_client 5 --cluster_type {CLUSTER-TYPE} --num_cluster 5 --distribution {DISTRIBUTION} ```
 
