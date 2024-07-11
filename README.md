@@ -15,8 +15,8 @@ pip install git+https://github.com/cocodataset/panopticapi.git
 ```
 
 
-## Dataset
-[Datasets](https://entuedu-my.sharepoint.com/personal/jingkang001_e_ntu_edu_sg/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fjingkang001%5Fe%5Fntu%5Fedu%5Fsg%2FDocuments%2Fopenpsg%2Fdata&ga=1) and pretrained models are provided. Please unzip the files if necessary.
+## Dataset [OpenPSG](https://github.com/Jingkang50/OpenPSG)
+[Datasets](https://entuedu-my.sharepoint.com/personal/jingkang001_e_ntu_edu_sg/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fjingkang001%5Fe%5Fntu%5Fedu%5Fsg%2FDocuments%2Fopenpsg%2Fdata&ga=1)  are provided. Please unzip the files if necessary.
 ```
 ├── data
 │   ├── coco
