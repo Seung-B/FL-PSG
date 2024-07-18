@@ -68,9 +68,7 @@ This is a category (presented below) file used for split of user datasets.
 ```
 
 ### Benchmark Generation
-You can generated benchmark using our method from ```data/Data_split.ipynb```.
-
-There are detailed comments in notebook.
+You can generated benchmark using our method from ```data/data_split.ipynb```.
 
 ## Model Zoo (R/mR@100)
 | Algorithms | CL           | Random         | Shard - IID    | Shard - non-IID  | Model Link |
