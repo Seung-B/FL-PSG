@@ -67,8 +67,11 @@ This is a category (presented below) file used for split of user datasets.
 ├── ...
 ```
 
-### Benchmark Generation
+### Benchmark Generation and PCA Visualization
 You can generated benchmark using our method from ```data/data_split.ipynb```.
+
+2D, 3D PCA Visualizations are supported!
+(You need to install ```plotly``` package for 3D visualization.)
 
 ## Model Zoo (R/mR@100)
 | Algorithms | CL           | Random         | Shard - IID    | Shard - non-IID  | Model Link |
