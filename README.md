@@ -38,25 +38,32 @@ pip install git+https://github.com/cocodataset/panopticapi.git
 ```
 
 ### Federated Learning Benchmarks used in paper
+This is a category (presented below) file used for split of user datasets.
+```
+├── data
+│   ├── word_categorized.json
+│   └── FL_DATA_SPLIT
+```
+
 .json files containing information on the data used by each user are included for each scenario.
 ```
 ├── ...
 ├── data/FL_DATA_SPLIT
-|   ├── mini_Random
-|   |   ├── User0.json
-|   |   ├── User1.json
-|   |   └── ...
-|   ├── mini_Super_cluster_5_Diri_02
-|   |   └── ...
-|   ├── mini_Super_cluster_5_Diri_1
-|   |   └── ...
-|   ├── mini_Super_cluster_5_Diri_10
-|   |   └── ...
-|   ├── mini_Super_cluster_5_IID
-|   |   └── ...
-|   ├── mini_Super_cluster_5_nonIID
-|   |   └── ...
-|   └── mini_Super_cluster_5_Full.json
+│   ├── mini_Random
+│   │   ├── User0.json
+│   │   ├── User1.json
+│   │   └── ...
+│   ├── mini_Super_cluster_5_Diri_02
+│   │   └── ...
+│   ├── mini_Super_cluster_5_Diri_1
+│   │   └── ...
+│   ├── mini_Super_cluster_5_Diri_10
+│   │   └── ...
+│   ├── mini_Super_cluster_5_IID
+│   │   └── ...
+│   ├── mini_Super_cluster_5_nonIID
+│   │   └── ...
+│   └── mini_Super_cluster_5_Full.json
 ├── ...
 ```
 
