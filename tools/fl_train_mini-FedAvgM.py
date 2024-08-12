@@ -202,9 +202,6 @@ def main():
     else:
         raise NotImplementedError
 
-    momentum = None
-    if args.server_algo == 'FedAvgM':
-        momentum = [param.data.zero_().view(-1) for param in model.relation_head.state_dict().values()]
 
     num_datas = []
 
@@ -257,6 +254,10 @@ def main():
         raise ValueError('check model parameters')
 
     g_rel_model = torch.cat(g_rel_model).cpu()
+    
+    momentum = None
+    if args.FL_algo == 'FedAvgM':
+        momentum = torch.cat([param.data.zero_().view(-1) for param in model.relation_head.state_dict().values()])
 
     avg_model = None
     for r in range(n_rounds):
@@ -311,7 +312,7 @@ def main():
 
         print("Average and Set models")
         
-        if args.server_algo == 'FedAvgM':
+        if args.FL_algo == 'FedAvgM':
             grad = g_rel_model - avg_model
             momentum = args.beta * momentum + grad
             g_rel_model = g_rel_model - momentum

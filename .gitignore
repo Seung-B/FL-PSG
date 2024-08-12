@@ -1,2 +1,7 @@
 .idea/
-
+work_dirs
+__pycache__
+coco
+glove
+psg
+FL_TRAINED_MODEL
