@@ -336,7 +336,8 @@ def main():
                 folder_path = f'data/FL_TRAINED_MODEL/mini_{args.model_name}/Random_Ratio{args.selected_client}_User{args.num_client}'
             else:
                 raise NotImplementedError
-
+            if args.FL_algo == 'FedAvgM':
+                folder_path += '_FedAvgM'
             os.makedirs(folder_path, exist_ok=True)
             ckpt_path = os.path.join(folder_path, f'Round-{r}.pth')
             torch.save(model.state_dict(), ckpt_path)
