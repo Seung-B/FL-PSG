@@ -193,7 +193,7 @@ def main():
     fl_cfg_annfiles = []
 
     if args.cluster_type == 'Super':
-        folder_path = f'data/FL_DATA_SPLIT/mini_Super_cluster_{args.num_cluster}_{args.distribution}'
+        folder_path = f'data/FL_DATA_SPLIT/mini_Super_cluster_{args.num_cluster}_User_{args.num_client}_{args.distribution}'
     elif args.cluster_type == 'Random':
         folder_path = 'data/FL_DATA_SPLIT/mini_Random'
     else:
