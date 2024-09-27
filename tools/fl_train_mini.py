@@ -250,6 +250,7 @@ def main():
         raise ValueError('check model parameters')
 
     g_rel_model = torch.cat(g_rel_model).cpu()
+#    breakpoint()
 
     avg_model = None
     for r in range(n_rounds):
