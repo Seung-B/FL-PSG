@@ -101,8 +101,10 @@ def parse_args():
     # Cluster type of dataset
     parser.add_argument('--cluster_type', type=str, required=True, choices=['Random', 'Super'])
     # FL algorithm
-    parser.add_argument('--FL_algo', type=str, default='FedAvg', choices=['FedAvg', 'FedAvgM', 'FedProx'])
+    parser.add_argument('--FL_algo', type=str, default='FedAvg', choices=['FedAvg', 'FedAvgM', 'FedOpt'])
     parser.add_argument('--beta', type=float, default=0.7)
+    parser.add_argument('--adam-lr', type=float, default=0.01)
+
 
     args = parser.parse_args()
     if 'LOCAL_RANK' not in os.environ:
@@ -258,6 +260,9 @@ def main():
     momentum = None
     if args.FL_algo == 'FedAvgM':
         momentum = torch.cat([param.data.zero_().view(-1) for param in model.relation_head.state_dict().values()])
+    elif args.FL_algo == 'FedOpt':
+        server_optimizer = torch.optim.Adam(model.parameters(), lr=args.adam_lr)
+        diff_grad = None
 
     avg_model = None
     for r in range(n_rounds):
@@ -272,7 +277,19 @@ def main():
             if hasattr(model, 'bbox_head'):
                 set_model_transformer(model, g_rel_model)
             elif hasattr(model, 'relation_head'):
-                set_model(model, g_rel_model)
+                if args.FL_algo == 'FedOpt' and diff_grad is not None:
+                    server_optimizer.zero_grad()
+                    current_index = 0  # keep track of where to read from grad_update
+
+                    for param in model.relation_head.parameters():
+                        numel = param.numel()
+                        size = param.size()
+                        param.grad.data.copy_(diff_grad[current_index:current_index + numel].view(size))
+                        current_index += numel
+
+                    server_optimizer.step()
+                else:
+                    set_model(model, g_rel_model)
             else:
                 raise ValueError('check model parameters')
             model.cuda()
@@ -316,6 +333,9 @@ def main():
             grad = g_rel_model - avg_model
             momentum = args.beta * momentum + grad
             g_rel_model = g_rel_model - momentum
+        elif args.FL_algo == 'FedOpt':
+            diff_grad = g_rel_model - avg_model
+            # server_update(model, client_states, server_optimizer)
         else:
             g_rel_model = torch.empty_like(avg_model).copy_(avg_model)
         avg_model = None
@@ -417,6 +437,22 @@ def set_model_transformer(model, rel_model, mode="copy"):
                 "Invalid deserialize mode {}, require \"copy\", \"add\" or \"sub\" "
                 .format(mode))
         current_index += numel
+
+def server_update(global_model, avg_model, server_optimizer):
+    local_model = copy.deepcopy(global_model)
+    set_model(local_model, avg_model, mode="copy")
+
+    # 클라이언트 업데이트 가중 평균
+    # for key in global_state.keys():
+    #     global_state[key] = torch.mean(torch.stack([client_states[i][key] for i in range(num_clients)]), dim=0)
+    # global_model.load_state_dict(global_state)
+
+    # 서버 최적화 (Adam)
+    server_optimizer.zero_grad()
+    for g_param, l_param in zip(global_model.parameters(), local_model.parameters()):
+        if g_param.grad is not None:
+            g_param.grad.data = g_param.data - l_param.data  # Gradients as a placeholder (example purpose)
+    server_optimizer.step()
 
 if __name__ == '__main__':
     main()
