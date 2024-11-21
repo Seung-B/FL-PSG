@@ -288,6 +288,7 @@ def main():
                         current_index += numel
 
                     server_optimizer.step()
+                    g_rel_model = [param.data.view(-1) for param in model.relation_head.state_dict().values()]
                     g_rel_model = torch.cat(g_rel_model).cpu()
                 else:
                     set_model(model, g_rel_model)
