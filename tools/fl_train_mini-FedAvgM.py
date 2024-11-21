@@ -288,6 +288,7 @@ def main():
                         current_index += numel
 
                     server_optimizer.step()
+                    g_rel_model = torch.cat(g_rel_model).cpu()
                 else:
                     set_model(model, g_rel_model)
             else:
