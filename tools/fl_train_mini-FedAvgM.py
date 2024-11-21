@@ -359,6 +359,8 @@ def main():
                 raise NotImplementedError
             if args.FL_algo == 'FedAvgM':
                 folder_path += '_FedAvgM'
+            elif args.FL_algo == 'FedOpt':
+                folder_path += '_FedOpt'
             os.makedirs(folder_path, exist_ok=True)
             ckpt_path = os.path.join(folder_path, f'Round-{r}.pth')
             torch.save(model.state_dict(), ckpt_path)
