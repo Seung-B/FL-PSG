@@ -280,21 +280,24 @@ def main():
             if hasattr(model, 'bbox_head'):
                 set_model_transformer(model, g_rel_model)
             elif hasattr(model, 'relation_head'):
-                if args.FL_algo == 'FedOpt' and diff_grad is not None:
-                    set_model_param(model, g_rel_model)
+                if args.FL_algo == 'FedOpt':
+                    if diff_grad is not None:
+                        set_model_param(model, g_rel_model)
 
-                    server_optimizer.zero_grad()
-                    current_index = 0  # keep track of where to read from grad_update
+                        server_optimizer.zero_grad()
+                        current_index = 0  # keep track of where to read from grad_update
 
-                    for param in model.relation_head.parameters():
-                        numel = param.numel()
-                        size = param.size()
-                        param.grad.data.copy_(diff_grad[current_index:current_index + numel].view(size))
-                        current_index += numel
+                        for param in model.relation_head.parameters():
+                            numel = param.numel()
+                            size = param.size()
+                            param.grad.data.copy_(diff_grad[current_index:current_index + numel].view(size))
+                            current_index += numel
 
-                    server_optimizer.step()
-                    g_rel_model = [param.data.view(-1) for param in model.relation_head.parameters()]
-                    g_rel_model = torch.cat(g_rel_model).cpu()
+                        server_optimizer.step()
+                        g_rel_model = [param.data.view(-1) for param in model.relation_head.parameters()]
+                        g_rel_model = torch.cat(g_rel_model).cpu()
+                    else:
+                        set_model_param(model, g_rel_model)
                 else:
                     set_model(model, g_rel_model)
             else:
