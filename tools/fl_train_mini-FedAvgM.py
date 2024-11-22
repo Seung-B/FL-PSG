@@ -408,27 +408,27 @@ def set_model_param(model, rel_model, mode="copy"):
         set model parameter as rel_model
     """
     current_index = 0  # keep track of where to read from grad_update
-
-    for param in model.relation_head.parameters():
-        numel = param.numel()
-        size = param.size()
-        if mode == "copy":
-            param.copy_(
-                rel_model[current_index:current_index +
-                                                    numel].view(size))
-        elif mode == "add":
-            param.add_(
-                rel_model[current_index:current_index +
-                                                    numel].view(size))
-        elif mode == "sub":
-            param.sub_(
-                rel_model[current_index:current_index +
-                                                    numel].view(size))
-        else:
-            raise ValueError(
-                "Invalid deserialize mode {}, require \"copy\", \"add\" or \"sub\" "
-                .format(mode))
-        current_index += numel
+    with torch.no_grad():
+        for param in model.relation_head.parameters():
+            numel = param.numel()
+            size = param.size()
+            if mode == "copy":
+                param.copy_(
+                    rel_model[current_index:current_index +
+                                                        numel].view(size))
+            elif mode == "add":
+                param.add_(
+                    rel_model[current_index:current_index +
+                                                        numel].view(size))
+            elif mode == "sub":
+                param.sub_(
+                    rel_model[current_index:current_index +
+                                                        numel].view(size))
+            else:
+                raise ValueError(
+                    "Invalid deserialize mode {}, require \"copy\", \"add\" or \"sub\" "
+                    .format(mode))
+            current_index += numel
 
 def set_model(model, rel_model, mode="copy"):
     """
