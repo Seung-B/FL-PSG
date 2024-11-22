@@ -281,7 +281,7 @@ def main():
                 set_model_transformer(model, g_rel_model)
             elif hasattr(model, 'relation_head'):
                 if args.FL_algo == 'FedOpt' and diff_grad is not None:
-                    set_model(model, g_rel_model)
+                    set_model_param(model, g_rel_model)
 
                     server_optimizer.zero_grad()
                     current_index = 0  # keep track of where to read from grad_update
