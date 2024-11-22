@@ -251,7 +251,10 @@ def main():
         if check_flag:
             raise ValueError('bbox must not be in relation head')
         check_flag = True
-        g_rel_model = [param.data.view(-1) for param in model.relation_head.state_dict().values()]
+        if args.FL_algo == 'FedOpt':
+            g_rel_model = [param.data.view(-1) for param in model.relation_head.parameters()]
+        else:
+            g_rel_model = [param.data.view(-1) for param in model.relation_head.state_dict().values()]
     if not check_flag:
         raise ValueError('check model parameters')
 
@@ -290,7 +293,7 @@ def main():
                         current_index += numel
 
                     server_optimizer.step()
-                    g_rel_model = [param.data.view(-1) for param in model.relation_head.state_dict().values()]
+                    g_rel_model = [param.data.view(-1) for param in model.relation_head.parameters()]
                     g_rel_model = torch.cat(g_rel_model).cpu()
                 else:
                     set_model(model, g_rel_model)
@@ -319,7 +322,10 @@ def main():
             if hasattr(model, 'bbox_head'):  # transformer
                 trained_model = [param.data.view(-1) for param in model.bbox_head.state_dict().values()]
             elif hasattr(model, 'relation_head'):  # motifs
-                trained_model = [param.data.view(-1) for param in model.relation_head.state_dict().values()]
+                if args.FL_algo == 'FedOpt':
+                    trained_model = [param.data.view(-1) for param in model.relation_head.parameters()]
+                else:
+                    trained_model = [param.data.view(-1) for param in model.relation_head.state_dict().values()]
             else:
                 raise ValueError('check model parameters')
 
@@ -349,7 +355,10 @@ def main():
             if hasattr(model, 'bbox_head'):  # transformer
                 set_model_transformer(model, g_rel_model)
             elif hasattr(model, 'relation_head'):  # motifs
-                set_model(model, g_rel_model)
+                if args.FL_algo == 'FedOpt':
+                    set_model_param(model, g_rel_model)
+                else:
+                    set_model(model, g_rel_model)
             else:
                 raise ValueError('check model parameters')
 
@@ -390,6 +399,33 @@ def avg_models(ls_models):
     serialized_parameters = torch.sum(
         torch.stack(serialized_params_list, dim=-1) * weights, dim=-1)
     return serialized_parameters
+
+def set_model_param(model, rel_model, mode="copy"):
+    """
+        set model parameter as rel_model
+    """
+    current_index = 0  # keep track of where to read from grad_update
+
+    for param in model.relation_head.parameters():
+        numel = param.numel()
+        size = param.size()
+        if mode == "copy":
+            param.copy_(
+                rel_model[current_index:current_index +
+                                                    numel].view(size))
+        elif mode == "add":
+            param.add_(
+                rel_model[current_index:current_index +
+                                                    numel].view(size))
+        elif mode == "sub":
+            param.sub_(
+                rel_model[current_index:current_index +
+                                                    numel].view(size))
+        else:
+            raise ValueError(
+                "Invalid deserialize mode {}, require \"copy\", \"add\" or \"sub\" "
+                .format(mode))
+        current_index += numel
 
 def set_model(model, rel_model, mode="copy"):
     """
