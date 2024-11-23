@@ -103,7 +103,8 @@ def parse_args():
     # FL algorithm
     parser.add_argument('--FL_algo', type=str, default='FedAvg', choices=['FedAvg', 'FedAvgM', 'FedOpt'])
     parser.add_argument('--beta', type=float, default=0.7)
-    parser.add_argument('--adam-lr', type=float, default=0.01)
+    parser.add_argument('--fedopt-lr', type=float, default=0.01)
+    parser.add_argument('--fedopt-tau', type=float, default=0.01)
 
 
     args = parser.parse_args()
@@ -264,8 +265,15 @@ def main():
     if args.FL_algo == 'FedAvgM':
         momentum = torch.cat([param.data.zero_().view(-1) for param in model.relation_head.state_dict().values()])
     elif args.FL_algo == 'FedOpt':
-        server_optimizer = torch.optim.Adam(model.parameters(), lr=args.adam_lr)
-        diff_grad = None
+        beta1 = 0.9
+        beta2 = 0.99
+        fedopt_tau = args.fedopt_tau
+        fedopt_lr = args.fedopt_lr
+        momentum = torch.cat([param.data.zero_().view(-1) for param in model.relation_head.parameters()])
+        vt = torch.cat([param.data.zero_().view(-1) for param in model.relation_head.parameters()])
+
+        # server_optimizer = torch.optim.Adam(model.parameters(), lr=args.fedopt_lr)
+        # diff_grad = None
 
     avg_model = None
     for r in range(n_rounds):
@@ -281,23 +289,23 @@ def main():
                 set_model_transformer(model, g_rel_model)
             elif hasattr(model, 'relation_head'):
                 if args.FL_algo == 'FedOpt':
-                    if diff_grad is not None:
-                        set_model_param(model, g_rel_model)
-
-                        server_optimizer.zero_grad()
-                        current_index = 0  # keep track of where to read from grad_update
-
-                        for param in model.relation_head.parameters():
-                            numel = param.numel()
-                            size = param.size()
-                            param.grad.data.copy_(diff_grad[current_index:current_index + numel].view(size))
-                            current_index += numel
-
-                        server_optimizer.step()
-                        g_rel_model = [param.data.view(-1) for param in model.relation_head.parameters()]
-                        g_rel_model = torch.cat(g_rel_model).cpu()
-                    else:
-                        set_model_param(model, g_rel_model)
+                    # if diff_grad is not None:
+                    #     set_model_param(model, g_rel_model)
+                    #
+                    #     server_optimizer.zero_grad()
+                    #     current_index = 0  # keep track of where to read from grad_update
+                    #
+                    #     for param in model.relation_head.parameters():
+                    #         numel = param.numel()
+                    #         size = param.size()
+                    #         param.grad.data.copy_(diff_grad[current_index:current_index + numel].view(size))
+                    #         current_index += numel
+                    #
+                    #     server_optimizer.step()
+                    #     g_rel_model = [param.data.view(-1) for param in model.relation_head.parameters()]
+                    #     g_rel_model = torch.cat(g_rel_model).cpu()
+                    # else:
+                    set_model_param(model, g_rel_model)
                 else:
                     set_model(model, g_rel_model)
             else:
@@ -347,7 +355,14 @@ def main():
             momentum = args.beta * momentum + grad
             g_rel_model = g_rel_model - momentum
         elif args.FL_algo == 'FedOpt':
-            diff_grad = g_rel_model - avg_model
+            delta = avg_model - g_rel_model
+            momentum = beta1 * momentum + (1 - beta1) * delta
+            delta_2 = torch.pow(delta, 2)
+            vt = beta2 * vt + (1 - beta2) * delta_2
+
+            g_rel_model = g_rel_model + fedopt_lr * momentum / (torch.sqrt(vt) + fedopt_tau)
+            # set_model(model, g_rel_model)
+            # diff_grad = g_rel_model - avg_model
             # server_update(model, client_states, server_optimizer)
         else:
             g_rel_model = torch.empty_like(avg_model).copy_(avg_model)
