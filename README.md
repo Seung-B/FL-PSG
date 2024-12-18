@@ -1,7 +1,7 @@
 # FL-PSG
 
 <p align="center">
-  <img src="https://github.com/Seung-B/FL-OpenPSG/assets/14955366/cdc892e9-9c9c-451c-a86f-53af9a8f81af" align="center" width="80%">
+  <img src="https://github.com/Seung-B/FL-OpenPSG/assets/14955366/cdc892e9-9c9c-451c-a86f-53af9a8f81af" align="center" width="95%">
 
   <p align="center">
   <a href="https://arxiv.org/abs/2412.10436" target='_blank'>
