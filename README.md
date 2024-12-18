@@ -1,6 +1,7 @@
 # FL-PSG
 
 [![Paper](https://raw.githubusercontent.com/primer/octicons/main/icons/file-24.svg)](https://arxiv.org/abs/2412.10436)
+Benchmarking Federated Learning for Semantic Datasets: Federated Scene Graph Generation
 
 ![clustering](https://github.com/Seung-B/FL-OpenPSG/assets/14955366/cdc892e9-9c9c-451c-a86f-53af9a8f81af)
 
