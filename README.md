@@ -11,6 +11,19 @@
 
 </p>
 
+
+  <p align="center">
+  <font size=5><strong>Benchmarking Federated Learning for Semantic Datasets: Federated Scene Graph Generation</strong></font>
+    <br>
+      <a href="https://github.com/Seung-B" target='_blank'>SeungBum Ha</a>,&nbsp;
+      <a href="https://github.com/hwan-sig" target='_blank'>Taehwan Lee</a>,&nbsp;
+      <a href="https://www.etri.re.kr/intro.html" target='_blank'>Jiyoun Lim</a>,&nbsp;
+      <a href="https://sites.google.com/view/swyoon89" target='_blank'>Sung Whan Yoon</a>
+    <br>
+  MIIL Lab, Ulsan National Institute of Science & Technology | Electronics and Telecommunications Research Institute
+  </p>
+</p>
+
 ## Environment Setting
 
 
