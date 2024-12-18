@@ -5,7 +5,7 @@
 
   <p align="center">
   <a href="https://arxiv.org/abs/2412.10436" target='_blank'>
-    <img src="https://img.shields.io/badge/Paper-arXiv%202422-b31b1b?style=flat-square">
+    <img src="https://img.shields.io/badge/Paper-arXiv%2024-b31b1b?style=flat-square">
   </a>
 
 
